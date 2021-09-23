@@ -1,7 +1,7 @@
 library(ggplot2)
 library(gapminder)
 library(dplyr)
-gapminder %>%
+gapminder <- gapminder %>%
   filter(country != "Kuwait")
 
 ggplot(gapminder,aes(x = lifeExp,y = gdpPercap)) +
@@ -18,7 +18,7 @@ gapminder_continent <- gapminder %>%
 gapminder$country
 ggsave("D://R/tmp//2021_case_studies-Lokki98//week_03//wealth&life1.png",device = "png",width = 15)
 
-ggplot(gapminder,group = country) +
+ggplot(gapminder,aes(group = country)) +
   geom_point(aes(x = year,y = gdpPercap,color = continent,size=pop/1000000)) +
   geom_line(aes(x = year, y = gdpPercap,color = continent)) + 
   geom_line(data = gapminder_continent,aes(x = year,y = gdpPercapweighted)) +
