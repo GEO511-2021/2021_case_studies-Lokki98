@@ -1,7 +1,64 @@
 ---
 title: "Case Study 07"
-author: Your Name
-date: August 1, 2020
+author: Ziqi Tang
+date: August 13, 2020
 output: github_document
 ---
- 
+Install following packages 
+----
+```{r message=FALSE}
+library(raster)
+library(sp)
+library(spData)
+library(tidyverse)
+library(sf)
+
+```
+Prepare country polygon data
+-----
+```{r message=FALSE}
+world <- world %>%
+  filter(name_long != "Antarctica")
+st_as_sf(world)
+```
+Prepare Climate Data
+----
+Load the WorldClim maximum temperature dataset at the lowest resolution
+```{r message=FALSE}
+tmax_monthly <- getData(name = "worldclim", var="tmax", res=10)
+```
+Convert value back to degree C
+```{r message=FALSE}
+gain(tmax_monthly) = 0.1
+```
+Calculate annual maximum temperature
+```{r message=FALSE}
+tmax_annual <- max(tmax_monthly)
+names(tmax_annual) <- "tmax"
+```
+Calculate the maximum temperature observed in each country
+-----
+```{r message=FALSE}
+tmax_temp <- raster::extract(tmax_annual,world,fun = max,na.rm=T, small=T,sp=T)
+```
+Find the hottest country in each continent
+---
+```{r message=FALSE}
+ggplot(world,aes(fill = tmax)) +
+  geom_sf(data = st_as_sf(tmax_temp)) +
+  scale_fill_viridis_c(name="Annual\nMaximum\nTemperature (C)") +
+  theme(legend.position = 'bottom')
+
+hottest_continents <- st_as_sf(tmax_temp) %>%
+  group_by(continent) %>%
+  select(name_long,continent,tmax) %>%
+  arrange(desc(tmax)) %>%
+  st_set_geometry(NULL) %>%
+  top_n(1,tmax)
+
+hottest_continents
+```
+
+
+
+
