@@ -18,29 +18,17 @@ library(sf)
 ``` r
 world <- world %>%
   filter(name_long != "Antarctica")
-st_as_sf(world)
+as(world,"Spatial")
 ```
 
-    ## Simple feature collection with 176 features and 10 fields
-    ## Geometry type: MULTIPOLYGON
-    ## Dimension:     XY
-    ## Bounding box:  xmin: -180 ymin: -55.61183 xmax: 180 ymax: 83.64513
-    ## Geodetic CRS:  WGS 84
-    ## # A tibble: 176 x 11
-    ##    iso_a2 name_long continent region_un subregion type  area_km2     pop lifeExp
-    ##  * <chr>  <chr>     <chr>     <chr>     <chr>     <chr>    <dbl>   <dbl>   <dbl>
-    ##  1 FJ     Fiji      Oceania   Oceania   Melanesia Sove~   1.93e4  8.86e5    70.0
-    ##  2 TZ     Tanzania  Africa    Africa    Eastern ~ Sove~   9.33e5  5.22e7    64.2
-    ##  3 EH     Western ~ Africa    Africa    Northern~ Inde~   9.63e4 NA         NA  
-    ##  4 CA     Canada    North Am~ Americas  Northern~ Sove~   1.00e7  3.55e7    82.0
-    ##  5 US     United S~ North Am~ Americas  Northern~ Coun~   9.51e6  3.19e8    78.8
-    ##  6 KZ     Kazakhst~ Asia      Asia      Central ~ Sove~   2.73e6  1.73e7    71.6
-    ##  7 UZ     Uzbekist~ Asia      Asia      Central ~ Sove~   4.61e5  3.08e7    71.0
-    ##  8 PG     Papua Ne~ Oceania   Oceania   Melanesia Sove~   4.65e5  7.76e6    65.2
-    ##  9 ID     Indonesia Asia      Asia      South-Ea~ Sove~   1.82e6  2.55e8    68.9
-    ## 10 AR     Argentina South Am~ Americas  South Am~ Sove~   2.78e6  4.30e7    76.3
-    ## # ... with 166 more rows, and 2 more variables: gdpPercap <dbl>,
-    ## #   geom <MULTIPOLYGON [arc_degree]>
+    ## class       : SpatialPolygonsDataFrame 
+    ## features    : 176 
+    ## extent      : -180, 180, -55.61183, 83.64513  (xmin, xmax, ymin, ymax)
+    ## crs         : +proj=longlat +datum=WGS84 +no_defs 
+    ## variables   : 10
+    ## names       : iso_a2,   name_long,     continent,               region_un,                 subregion,              type,         area_km2,        pop,          lifeExp,        gdpPercap 
+    ## min values  :     AE, Afghanistan,        Africa,                  Africa, Australia and New Zealand,           Country, 2416.87048266498,      56295,           50.621, 597.135168986395 
+    ## max values  :     ZW,    Zimbabwe, South America, Seven seas (open ocean),            Western Europe, Sovereign country, 17018507.4094666, 1364270000, 83.5878048780488,  120860.06755829
 
 ## Prepare Climate Data
 
