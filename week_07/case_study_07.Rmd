@@ -19,7 +19,7 @@ Prepare country polygon data
 ```{r message=FALSE}
 world <- world %>%
   filter(name_long != "Antarctica")
-st_as_sf(world)
+as(world,"Spatial")
 ```
 Prepare Climate Data
 ----
