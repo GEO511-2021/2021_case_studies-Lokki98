@@ -1,0 +1,32 @@
+---
+title: "case study 7"
+author: "Ziqi Tang"
+date: "2021/10/12"
+output: html_document
+---
+Install packages
+
+```{r message=FALSE}
+library(raster)
+library(sp)
+library(spData)
+library(tidyverse)
+library(sf)
+```
+
+```{r message=FALSE}
+data(world)
+tmax_monthly <- getData(name = "worldclim", var="tmax", res=10)
+tmax_monthly
+gain(tmax_monthly) = 0.1
+```
+```
+```
+
+
+
+
+
+
+
+

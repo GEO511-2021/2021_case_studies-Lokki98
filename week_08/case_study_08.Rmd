@@ -1,7 +1,40 @@
 ---
-title: "Case Study 08"
-author: Your Name
-date: August 1, 2020
-output: github_document
+title: "case study 8"
+author: "Ziqi Tang  "
+date: "2021/10/25"
+output:
+  html_document: default
+  github_document: default
+  powerpoint_presentation: default
+  word_document: default
 ---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+```{R message = FALSE}
+library(rmarkdown)
+library(tidyverse)
+library(kableExtra)
+```
+```{R warning = FALSE}
+co2_annmean <- read_table("ftp://aftp.cmdl.noaa.gov/products/trends/co2/co2_annmean_mlo.txt",skip = 56)
+```
+
+
+```{R message = FALSE}
+colnames(co2_annmean) <- c('year','mean','unc')
+co2_annmean
+```
+
+```{R}
+ggplot(co2_annmean,aes(x = year,y = mean))+
+  geom_line()
+
+```
+```{R}
+co2_annmean[1:2] %>% 
+  kable() %>% 
+  as_image(width = 3,file = "table.jpg")
+```
  
