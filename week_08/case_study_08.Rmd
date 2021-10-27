@@ -1,6 +1,6 @@
 ---
 title: "case study 8"
-author: "Ziqi Tang"
+author: "Ziqi Tang  "
 date: "2021/10/25"
 output:
   html_document: default
