@@ -16,7 +16,7 @@ gapminder_continent <- gapminder %>%
             gdpPercapweighted = weighted.mean(x = gdpPercap, w = pop),
             pop = sum(as.numeric(pop)))
 gapminder$country
-ggsave("wealth&life1.png",device = "png",width = 15)
+ggsave("week_03/wealth&life1.png",device = "png",width = 15)
 
 ggplot(gapminder,aes(group = country)) +
   geom_point(aes(x = year,y = gdpPercap,color = continent,size=pop/1000000)) +
@@ -30,7 +30,7 @@ ggplot(gapminder,aes(group = country)) +
   ) + 
   labs(title = "Wealth and life expectancy through time")
 
-ggsave("wealth&life2.png",device = "png",width = 15)
+ggsave("week_03/wealth&life2.png",device = "png",width = 15)
 
 
 
