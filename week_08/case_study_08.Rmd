@@ -2,11 +2,7 @@
 title: "case study 8"
 author: "Ziqi Tang  "
 date: "2021/10/25"
-output:
-  html_document: default
-  github_document: default
-  powerpoint_presentation: default
-  word_document: default
+output: github_document
 ---
 
 ```{r setup, include=FALSE}
@@ -35,6 +31,6 @@ ggplot(co2_annmean,aes(x = year,y = mean))+
 ```{R}
 co2_annmean[1:2] %>% 
   kable() %>% 
-  as_image(width = 3,file = "table.jpg")
+  as_image(width = 3,file = "table1.jpg")
 ```
  
