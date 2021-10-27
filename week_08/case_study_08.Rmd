@@ -35,7 +35,6 @@ ggplot(co2_annmean,aes(x = year,y = mean))+
 ```{R}
 co2_annmean[1:2] %>% 
   kable() %>% 
-  as_image(width = 3,file = "table.png")
-
+  as_image(width = 3,file = "table.jpg")
 ```
  
