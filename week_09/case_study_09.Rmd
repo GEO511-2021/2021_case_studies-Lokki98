@@ -1,7 +1,52 @@
 ---
-title: "Case Study 09"
-author: Your Name
+title: "Case Study 9"
+author: Ziqi Tang
 date: August 1, 2020
 output: github_document
 ---
- 
+```{r echo = TRUE}
+library(sf)
+library(tidyverse)
+library(ggmap)
+library(rnoaa)
+library(spData)
+data(world)
+data(us_states)
+```
+```{R }
+# Download zipped data from noaa with storm track information
+dataurl="https://www.ncei.noaa.gov/data/international-best-track-archive-for-climate-stewardship-ibtracs/v04r00/access/shapefile/IBTrACS.NA.list.v04r00.points.zip"
+tdir=tempdir()
+download.file(dataurl,destfile=file.path(tdir,"temp.zip"))
+unzip(file.path(tdir,"temp.zip"),exdir = tdir)
+list.files(tdir)
+storm_data <- read_sf(list.files(tdir,pattern=".shp",full.names = T))
+```
+```{R }
+filtered_data <- storm_data %>%
+  filter(as.numeric(substring(ISO_TIME,1,4)) >= 1950) %>%
+  mutate_if(is.numeric, function(x) ifelse(x==-999.0,NA,x)) %>%
+  mutate(decade=(floor(year/10)*10))
+region <- st_bbox(filtered_data)
+
+ggplot(data = world) +
+  geom_sf(data = world,inherit.aes = FALSE) +
+  stat_bin2d(data=filtered_data, aes(y=st_coordinates(filtered_data)[,2], x=st_coordinates(filtered_data)[,1]),bins=100) +
+  facet_wrap(~ decade) +
+  scale_fill_distiller(palette="YlOrRd", trans="log", direction=-1, breaks = c(1,10,100,1000)) +
+  coord_sf(ylim=region[c(2,4)], xlim=region[c(1,3)]) +
+  theme(axis.title = element_blank())
+
+reprojected_usa <- st_transform(us_states,st_crs(filtered_data))
+selected_usa <- reprojected_usa %>%
+  select(state = NAME)
+storm_states <- st_join(filtered_data, selected_usa, join = st_intersects,left = F)
+```
+```{R }
+result <- storm_states %>%
+  group_by(state) %>%
+  summarize(filtered_data=length(unique(NAME))) %>%
+  arrange(desc(filtered_data)) %>%
+  slice(1:6)
+result
+```
