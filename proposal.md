@@ -8,38 +8,30 @@ template](http://adamwilson.us/SpatialDataScience/scripts/Project_ProposalTempla
 
 # Introduction to problem/question
 
-The Kyoto Protocol divides the world’s countries into two categories in
-terms of carbon emissions, one is rich countries and the other is
-developing countries. The agreement stipulates that the former will
-reduce emissions, while the latter will not bear the obligation of
-emission reduction due to the needs of economic development. After the
-entry into force of the Kyoto Protocol in 1997, the carbon emissions of
-Europe, the United States and other rich countries and regions did slow
-down and GDP continued to grow rapidly. However, the carbon emissions of
-developing countries increased explosively, and the speed of GDP
-development was lower than those of these rich countries.
+As Earth’s population continues to grow, remote sensing of nighttime
+light emissions offers a unique perspective for investigations into some
+of these human behaviors. China’s economy has developed rapidly in
+recent years. However, there are gaps in urban construction and economic
+development in different regions.
 
 ### Problem / Question
 
-Is there any difference in the change of annual emissions in different
-countries and the relationship between emissions and GDP?
+What are the characteristics of the distribution and change of night
+lights in China from 2000 to 2020?
 
 # Inspiring Examples
 
 ## Example 1
 
-<img src="D:\R\tmp\2021_case_studies-Lokki98\images\pie.png" width="40%" style="display: block; margin: auto;" />
-<https://www.cgdev.org/media/developing-countries-are-responsible-63-percent-current-carbon-emissions>
+<center>
+<img src="https://raw.githubusercontent.com/GEO511-2021/2021_case_studies-Lokki98/master/map.png">
+</center>
 
-I found this graphic easy to understand the percent of annual emissions
-which countries produce. This type of graphic could be used to
-illustrate the proportion of different sectors using simple ‘Piechart’
-in ggplot.
+I found this graphic easy to understand the CO2 emissions in different
+countries. This type of graphic could be used to reflect the
+distribution of night light in different provinces of China.
 
 ## Example 2
-
-<img src="D:\R\tmp\2021_case_studies-Lokki98\images\consumption-co2-per-capita.png" width="40%" style="display: block; margin: auto;" />
-<https://ourworldindata.org/grapher/consumption-co2-per-capita?tab=chart&time=1800>..2018&country=\~CHN
 
 I found this graphic easy to understand the changes in annual emissions
 in different countries. This type of graphic could be used to reflect
@@ -47,13 +39,9 @@ the trend of a phenomenon using simple ‘geom\_line’ in ggplot.
 
 ## Example 3
 
-<img src="D:\R\tmp\2021_case_studies-Lokki98\images\correlation.jpeg" width="40%" style="display: block; margin: auto;" />
-<https://courses.lumenlearning.com/boundless-statistics/chapter/correlation/>
-
-I found this graphic easy to understand the correlation between the
-population and carbon emissions. This type of graphic could be used to
-reflect the correlation between CO2 and greenhouse emissions in
-different countries using package ‘correlation’.
+<center>
+<img src="https://raw.githubusercontent.com/GEO511-2021/2021_case_studies-Lokki98/master/map.png">
+</center>
 
 # Proposed data sources
 
