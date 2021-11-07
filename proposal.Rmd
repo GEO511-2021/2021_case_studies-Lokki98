@@ -1,16 +1,15 @@
 ---
 title: "proposal"
 author: "Ziqi Tang"
-datetime: 11/6/2021
 output: github_document
 ---
-[<i class="fa fa-file-code-o fa-1x" aria-hidden="true"></i> Download this file as a template ](http://adamwilson.us/SpatialDataScience/scripts/Project_ProposalTemplate.Rmd).
+
 
 # Introduction to problem/question
-As Earth's population continues to grow, remote sensing of nighttime light emissions offers a unique perspective for investigations into some of these human behaviors. China's economy has developed rapidly in recent years. However, there are gaps in urban construction and economic development in different regions.
+As Earth's population grows, remote sensing of nighttime light emissions offers a unique perspective for investigations into some of these human behaviors. China's economy has developed rapidly in recent years. However, there are gaps in urban construction and economic development in different regions.
 
 ### Problem / Question
-What are the characteristics of the distribution and change of night lights in China from 2000 to 2020?
+What are the characteristics of the distribution and change of nighttime value in China from 2000 to 2017?
 
 # Inspiring Examples
 ```{r, echo=FALSE}
@@ -19,36 +18,41 @@ url <- "https://raw.githubusercontent.com/GEO511-2021/2021_case_studies-Lokki98/
 ```
 ## Example 1
 <center><img src="`r url`"></center>
-I found this graphic easy to understand the CO2 emissions in different countries. This type of graphic could be used to reflect the distribution of night light in different provinces of China.
+I found this graphic easy to understand the CO2 emissions in different countries. This type of graphic could be used to reflect the distribution of night light in each province of China.
 
 ## Example 2
-
-
-I found this graphic easy to understand the changes in annual emissions in different countries. This type of graphic could be used to reflect the trend of a phenomenon using simple 'geom_line' in ggplot.
+```{r, echo=FALSE}
+# Define variable containing url
+url <- "https://www.visme.co/wp-content/uploads/2019/12/i_Monthly-Active-Users-of-an-App-Line-Graph_full.jpg"
+```
+<center><img src="`r url`"></center>
+I found this graphic easy to understand the changes in the numbers of monthly active users in different countries. This type of graphic could be used to reflect the changes in nighttime value in each province from 2000 to 2017.
 
 ```{r, echo=FALSE}
 # Define variable containing url
-url <- "https://raw.githubusercontent.com/GEO511-2021/2021_case_studies-Lokki98/master/map.png"
+url <- "https://www.nasa.gov/sites/default/files/thumbnails/image/2016-north-america-usa.jpg"
 ```
 ## Example 3
 <center><img src="`r url`"></center>
+This composite image shows the continental U.S. at night. The relationship between metropolitan agglomerations can be felt more naturally on a raster map.
 
 # Proposed data sources
-CO2 emissions: this data is sourced from the Global Carbon Project. 
+[An extended time-series (2000-2018) of global NPP-VIIRS-like nighttime light data](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/YGIVCD)
 
-Greenhouse gas emissions (including methane, and nitrous oxide): this data is sourced from the CAIT Climate Data Explorer, and downloaded from the Climate Watch Portal.
-
-Population & GDP
-
+```{r, echo=FALSE}
+# Define variable containing url
+url <- "https://raw.githubusercontent.com/GEO511-2021/2021_case_studies-Lokki98/master/nightlight.png"
+```
+<center><img src="`r url`"></center>
 # Proposed methods
-1. Read data by "read_csv" function.
-2. Divide the data into the following categories: United States, European Union, Japan, Russia, other high-come developed countries, China, India, Middle East & North Africa, Latin America, other developing Asia, etc.
-3. Use "piechart" to reflect the percent of annual emissions of different countries.
-4. Use "geom_line" to reflect the changes in annual emissions, CO2 and GDP.
-5. Use "correlation" to show the relation coefficients of different countries.
+1.read_xlsx: read data in Excel
+
+2.filter&dplyr: select the maximum and mean value from the nighttime data
+
+3.ggplot: plot the nighttime value on the map
 
 
 # Expected results
-1. Piechart showing the percentage of annual emissions in different countries.
-2. Graph showing the changes of annual emissions, CO2, and GDP in 2000, 2004, 2008, 2012. 
-3. Graph showing the relation coefficients of different countries.
+1. The changes in the nighttime value of different provinces in China from 2000 to 2017
+
+2. The distribution of nighttime value in China

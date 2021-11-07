@@ -4,16 +4,16 @@ Ziqi Tang
 
 # Introduction to problem/question
 
-As Earth’s population continues to grow, remote sensing of nighttime
-light emissions offers a unique perspective for investigations into some
-of these human behaviors. China’s economy has developed rapidly in
-recent years. However, there are gaps in urban construction and economic
-development in different regions.
+As Earth’s population grows, remote sensing of nighttime light emissions
+offers a unique perspective for investigations into some of these human
+behaviors. China’s economy has developed rapidly in recent years.
+However, there are gaps in urban construction and economic development
+in different regions.
 
 ### Problem / Question
 
-What are the characteristics of the distribution and change of night
-lights in China from 2000 to 2020?
+What are the characteristics of the distribution and change of nighttime
+value in China from 2000 to 2017?
 
 # Inspiring Examples
 
@@ -25,48 +25,51 @@ lights in China from 2000 to 2020?
 
 I found this graphic easy to understand the CO2 emissions in different
 countries. This type of graphic could be used to reflect the
-distribution of night light in different provinces of China.
+distribution of night light in each province of China.
 
 ## Example 2
 
-I found this graphic easy to understand the changes in annual emissions
-in different countries. This type of graphic could be used to reflect
-the trend of a phenomenon using simple ‘geom\_line’ in ggplot.
+<center>
+<img src="https://www.visme.co/wp-content/uploads/2019/12/i_Monthly-Active-Users-of-an-App-Line-Graph_full.jpg">
+</center>
+
+I found this graphic easy to understand the changes in the numbers of
+monthly active users in different countries. This type of graphic could
+be used to reflect the changes in nighttime value in each province from
+2000 to 2017.
 
 ## Example 3
 
 <center>
-<img src="https://raw.githubusercontent.com/GEO511-2021/2021_case_studies-Lokki98/master/map.png">
+<img src="https://www.nasa.gov/sites/default/files/thumbnails/image/2016-north-america-usa.jpg">
 </center>
+
+This composite image shows the continental U.S. at night. The
+relationship between metropolitan agglomerations can be felt more
+naturally on a raster map.
 
 # Proposed data sources
 
-CO2 emissions: this data is sourced from the Global Carbon Project.
+[An extended time-series (2000-2018) of global NPP-VIIRS-like nighttime
+light
+data](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/YGIVCD)
 
-Greenhouse gas emissions (including methane, and nitrous oxide): this
-data is sourced from the CAIT Climate Data Explorer, and downloaded from
-the Climate Watch Portal.
-
-Population & GDP
+<center>
+<img src="https://raw.githubusercontent.com/GEO511-2021/2021_case_studies-Lokki98/master/nightlight.png">
+</center>
 
 # Proposed methods
 
-1.  Read data by “read\_csv” function.
-2.  Divide the data into the following categories: United States,
-    European Union, Japan, Russia, other high-come developed countries,
-    China, India, Middle East & North Africa, Latin America, other
-    developing Asia, etc.
-3.  Use “piechart” to reflect the percent of annual emissions of
-    different countries.
-4.  Use “geom\_line” to reflect the changes in annual emissions, CO2 and
-    GDP.
-5.  Use “correlation” to show the relation coefficients of different
-    countries.
+1.read\_xlsx: read data in Excel
+
+2.filter&dplyr: select the maximum and mean value from the nighttime
+data
+
+3.ggplot: plot the nighttime value on the map
 
 # Expected results
 
-1.  Piechart showing the percentage of annual emissions in different
-    countries.
-2.  Graph showing the changes of annual emissions, CO2, and GDP in 2000,
-    2004, 2008, 2012.
-3.  Graph showing the relation coefficients of different countries.
+1.  The changes in the nighttime value of different provinces in China
+    from 2000 to 2017
+
+2.  The distribution of nighttime value in China
