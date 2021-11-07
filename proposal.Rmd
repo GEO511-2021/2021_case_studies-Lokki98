@@ -43,7 +43,7 @@ This composite image shows the continental U.S. at night. The relationship betwe
 # Define variable containing url
 url <- "https://raw.githubusercontent.com/GEO511-2021/2021_case_studies-Lokki98/master/nightlight.png"
 ```
-<center><img src="`r url`"></center>
+<center><img src="`r url`" width="70%"></center>
 # Proposed methods
 1.read_xlsx: read data in Excel
 

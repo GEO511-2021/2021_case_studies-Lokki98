@@ -55,7 +55,7 @@ light
 data](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/YGIVCD)
 
 <center>
-<img src="https://raw.githubusercontent.com/GEO511-2021/2021_case_studies-Lokki98/master/nightlight.png">
+<img src="https://raw.githubusercontent.com/GEO511-2021/2021_case_studies-Lokki98/master/nightlight.png" width="70%">
 </center>
 
 # Proposed methods
