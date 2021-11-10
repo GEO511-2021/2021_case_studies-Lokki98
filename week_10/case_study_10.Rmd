@@ -4,31 +4,33 @@ author: Ziqi Tang
 date: August 1, 2020
 output: github_document
 ---
-```{R }
+### Part 1
 library(raster)
 library(rasterVis)
 library(rgdal)
 library(ggmap)
 library(tidyverse)
 library(knitr)
-
-# New Packages
 library(ncdf4)
 
-dir.create("data",showWarnings = F) #create a folder to hold the data
+dir.create("data",showWarnings = F) 
 
 lulc_url="https://github.com/adammwilson/DataScienceData/blob/master/inst/extdata/appeears/MCD12Q1.051_aid0001.nc?raw=true"
+
 lst_url="https://github.com/adammwilson/DataScienceData/blob/master/inst/extdata/appeears/MOD11A2.006_aid0001.nc?raw=true"
 
-# download them
+
 download.file(lulc_url,destfile="data/MCD12Q1.051_aid0001.nc", mode="wb")
+
 download.file(lst_url,destfile="data/MOD11A2.006_aid0001.nc", mode="wb")
+
 lst=stack("data/MOD11A2.006_aid0001.nc",varname="LST_Day_1km")
 
 lw=SpatialPoints(data.frame(x= -78.791547,y=43.007211))
+
 projection(lw) <- "+proj=longlat"
-projection1 <- projection(lst)
-spTransform(lw,projection1)
+
+spTransform(lw,crs(lst))
 
 extractedPoint <- raster::extract(lst,lw,buffer=1000,fun=mean,na.rm=T) %>%
   t() %>%
@@ -36,10 +38,25 @@ extractedPoint <- raster::extract(lst,lw,buffer=1000,fun=mean,na.rm=T) %>%
   mutate(date = getZ(lst))
 
 head(extractedPoint)
-ggplot(extractedPoint,aes(x=date,y=V1)) + geom_point() + geom_smooth(span = 0.01,n = 100)
-```
-```{R}
 
+ggplot(extractedPoint,aes(x=date,y=V1 / 10)) +
+  geom_point() +
+  geom_smooth(span = 0.01,n = 100) +
+  ylab("Monthly Mean Land Surface Temperature")
+  
+  
+### Part 2
+tmonth <- as.numeric(format(getZ(lst),"%m"))
 
+lst_month <- stackApply(lst /100000, indices = tmonth, fun=mean)
 
-```
+names(lst_month)=month.name
+
+rasterVis::gplot(lst_month) +
+ geom_tile(aes(fill = value )) +
+ facet_wrap(~ variable) +
+ scale_fill_gradient(low = 'blue', high = "orange") +
+ coord_equal()
+ 
+monthly_mean <- cellStats(lst_month / 10000,mean)
+monthly_mean
