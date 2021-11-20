@@ -4,4 +4,40 @@ author: Your Name
 date: August 1, 2020
 output: github_document
 ---
+```{R message = FALSE}
+library(raster)
+library(sp)
+library(spData)
+library(tidyverse)
+library(sf)
+library(dplyr)
+```
+```{R}
+data(world)
+tmax_monthly <- getData(name = "worldclim", var = "tmax", res = 10)
+
+
+world_data <- world %>% 
+  filter(continent != "Antarctica") %>% 
+  as("Spatial")
+
+gain(tmax_monthly) <- 0.1
+tmax_annual <- max(tmax_monthly)
+names(tmax_annual) <- "tmax"
+
+temp_max <- raster::extract(tmax_annual, world_data, fun = max, na.rm = TRUE, small = TRUE, sp = TRUE) %>% 
+  st_as_sf()
+
+ggplot(temp_max) + 
+  geom_sf(aes(fill = tmax)) + 
+  scale_fill_viridis_c(name = "Annual\nMaximum\nTemperature (C)") +
+  theme(legend.position = 'bottom')
+
+temp_max %>% 
+  st_set_geometry(NULL) %>% 
+  select(name_long, continent, tmax) %>% 
+  group_by(continent) %>% 
+  top_n(1) %>% 
+  arrange(desc(tmax))
+```
  
