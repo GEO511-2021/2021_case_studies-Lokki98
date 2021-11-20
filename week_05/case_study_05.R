@@ -6,7 +6,6 @@ library(units)
 
 #load 'world' data from spData package
 data(world)  
-# load 'states' boundaries from spData package
 data(us_states)
 # plot(world[1])  #plot if desired
 # plot(us_states[1]) #plot if desired
