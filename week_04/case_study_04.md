@@ -1,14 +1,14 @@
----
-title: "Case Study 04"
-author: Ziqi Tang
-date: August 1, 2020
-output: github_document
----
-```{R message=FALSE}
+Case Study 04
+================
+Ziqi Tang
+August 1, 2020
+
+``` r
 library(tidyverse)
 library(nycflights13)
 ```
-```{R}
+
+``` r
 farthest_airport <- flights %>%
   arrange(desc(distance)) %>%
   slice(1) %>% 
@@ -16,3 +16,5 @@ farthest_airport <- flights %>%
   select(name) 
 as.character(farthest_airport) 
 ```
+
+    ## [1] "Honolulu Intl"
